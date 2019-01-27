@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Menu from './components/Menu';
+import Controls from './components/Controls';
+import { Global, css } from "@emotion/core";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      showNav: true
+    };
+  }
+
+  handleShowMenu = () => {
+    this.setState(state => ({ showNav: !state.showNav }));
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Global styles={css`
+            body {
+              font-family: "Neue Haas Unica Pro";
+              color: black;
+            }`} />
+        <Menu show={this.state.showNav}/>
+        <Controls showMenu={this.handleShowMenu} />
       </div>
     );
   }
