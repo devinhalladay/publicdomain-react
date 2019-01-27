@@ -10,13 +10,21 @@ class App extends Component {
     this.state = { 
       showMenu: false
     };
+
+    this.showMenu = this.showMenu.bind(this);
+  }
+
+  showMenu() {
+    this.setState({
+      showMenu: !this.state.showMenu
+    });
   }
   
   render() {
     return (
       <div className="App">
         <Menu show={this.state.showMenu}/>
-        <Controls />
+        <Controls showMenuHandler={this.showMenu} />
       </div>
     );
   }
