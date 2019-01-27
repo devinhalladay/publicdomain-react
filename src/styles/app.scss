@@ -428,6 +428,10 @@ section.content-section {
 
   .trending-header {
     padding-bottom: 20px;
+
+    svg {
+      margin-right: 0.5em;
+    }
   }
 
   .article-cover-image {
@@ -463,6 +467,13 @@ section.content-section {
       display: flex;
       align-items: center;
       height: 60px;
+      cursor: pointer;
+
+      &:hover {
+        svg {
+          transform: rotate(45deg);
+        }
+      }
       
       svg {
         transition: transform 0.3s ease;
@@ -594,6 +605,12 @@ section.content-section {
 
   a {
     display: flex;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: lightgrey;
+      padding: 0.25em;
+    }
 
     &:not(:last-child) {
       margin-right: 1em;

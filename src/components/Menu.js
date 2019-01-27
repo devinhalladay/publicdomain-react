@@ -7,6 +7,26 @@ const Wrapper = styled.section`
   background: papayawhip;
 `;
 
+function Collapsible(props) {
+  return (
+    <div className="collapsible">
+      <header>
+        <h2>{props.title}</h2>
+        <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.5 28.6985V1.19849M13.5 1.19849L1 13.6985M13.5 1.19849L26 13.6985" stroke="black" />
+        </svg>
+      </header>
+      <div className="collapsible-content">
+        <ul>
+          <li>
+            <a href="#">Test</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 class Menu extends Component {
   render() {
     return <div className={this.props.show ? `menu open` : `menu`}>
@@ -21,36 +41,8 @@ class Menu extends Component {
         </div>
         <div className="contents grid">
           <div className="nav">
-            <div className="collapsible">
-              <header>
-                <h2>Investigate</h2>
-                <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.5 28.6985V1.19849M13.5 1.19849L1 13.6985M13.5 1.19849L26 13.6985" stroke="black" />
-                </svg>
-              </header>
-              <div className="collapsible-content">
-                <ul>
-                  <li>
-                    <a href="#">Test</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="collapsible">
-              <header>
-                <h2>Participate</h2>
-                <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.5 28.6985V1.19849M13.5 1.19849L1 13.6985M13.5 1.19849L26 13.6985" stroke="black" />
-                </svg>
-              </header>
-              <div className="collapsible-content">
-                <ul>
-                  <li>
-                    <a href="#">Test</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <Collapsible title="Investigate" />
+            <Collapsible title="Participate" />
             <h3>
               <a href="#">About</a>
             </h3>
@@ -67,12 +59,12 @@ class Menu extends Component {
               Trending
             </h4>
             <a href="/library/2012/01/01/example-article/" className="article-unit">
-              <div className="article-cover-image" style={{backgroundImage: 'url(/assets/images/test-1.jpg)'}} />
+              <div className="article-cover-image" style={{backgroundImage: 'url(/images/test-1.jpg)'}} />
               <p className="article-title">Example Article</p>
             </a>
             <a href="/library/2012/01/01/example-article/" className="article-unit">
               {" "}
-            <div className="article-cover-image" style={{ backgroundImage: 'url(/assets/images/test-1.jpg)' }} />
+            <div className="article-cover-image" style={{ backgroundImage: 'url(/images/test-1.jpg)' }} />
               <p className="article-title">Example Article</p>
             </a>
           </div>
