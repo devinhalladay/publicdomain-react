@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu'
-import Controls from './components/Controls'
+import Menu from './components/Menu';
+import Controls from './components/Controls';
+import BottomPrimaryNav from './components/BottomPrimaryNav/index';
+import Logo from './components/Logo.svg';
 
 class App extends Component {
   constructor(props) {
@@ -19,12 +21,14 @@ class App extends Component {
   }
   
   render() {
-    return (
-      <div className="App">
-        <Menu show={this.state.showMenu}/>
+    return <div className="App">
+        <Menu show={this.state.showMenu} />
         <Controls showMenuHandler={this.showMenu} />
-      </div>
-    );
+        <section class="center">
+          <img src={Logo} alt="Public Domain Logo"/>
+        </section>
+        <BottomPrimaryNav />
+      </div>;
   }
 }
 

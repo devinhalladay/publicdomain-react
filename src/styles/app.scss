@@ -53,7 +53,7 @@ section {
     width: calc(100vw - 160px);
     background: #fff;
     
-    svg {
+    img {
       width: 40vw;
       max-height: 60vh;
     }
@@ -131,7 +131,7 @@ section {
   &--left, &--right {
     cursor: pointer;
     height: 100%;
-    display: block;
+    display: flex;
     align-items: center;
     
     & > * {
@@ -144,15 +144,25 @@ section {
     padding-right: 20px;
     border-right: 2px solid black;
     text-align: right;
+
+    &.hovered {
+      .arrow .arrow--line {
+        width: calc(100% - 20px);
+      }
+    }
     
     .arrow {
       padding-right: 10px;
+      flex-grow: 2;
       
       .arrow--line {
         float: right;  
+        width: 100px;
+        transition: 0.4s all ease;
       }
       
       .arrow--chevron {
+        margin-left: auto;
         width: 40px;
         height: 40px;
         border-bottom: 2px solid black;
@@ -166,11 +176,24 @@ section {
   
   &--right {
     padding-left: 20px;
-    text-align: left;
+
+    &.hovered {
+      .arrow .arrow--line {
+        width: calc(100% - 20px);
+      }
+    }
+
     .arrow {
       padding-left: 10px;
+      flex-grow: 2;
+
+      .arrow--line {
+        width: 100px;
+        transition: 0.4s all ease;
+      }
       
       .arrow--chevron {
+        margin-right: auto;
         width: 40px;
         height: 40px;
         border-top: 2px solid black;
