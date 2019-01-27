@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
 
-import styled from "styled-components";
+// import styled from "styled-components";
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
+// const Wrapper = styled.section`
+//   padding: 4em;
+//   background: papayawhip;
+// `;
 
-function Collapsible(props) {
-  return (
-    <div className="collapsible">
-      <header>
-        <h2>{props.title}</h2>
-        <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.5 28.6985V1.19849M13.5 1.19849L1 13.6985M13.5 1.19849L26 13.6985" stroke="black" />
-        </svg>
-      </header>
-      <div className="collapsible-content">
-        <ul>
-          <li>
-            <a href="#">Test</a>
-          </li>
-        </ul>
+class Collapsible extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false
+    }
+  }
+
+  expand() {
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
+
+  render() {
+    return (
+      <div onClick={ () => this.expand() } className={this.state.expanded ? `collapsible expanded` : `collapsible`}>
+        <header>
+          <h2>{this.props.title}</h2>
+          <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 28.6985V1.19849M13.5 1.19849L1 13.6985M13.5 1.19849L26 13.6985" stroke="black" />
+          </svg>
+        </header>
+        <div className="collapsible-content">
+          <ul>
+            <li>
+              <a href="#">Test</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 class Menu extends Component {
