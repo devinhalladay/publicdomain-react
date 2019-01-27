@@ -522,6 +522,16 @@ section.content-section {
     li {
       display: inline-block;
 
+      a {
+        transition: 0.1s all ease;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: lightgrey;
+          padding: 0.25em;
+        }
+      }
+
       &:last-child {
         font-weight: 600;
       }
@@ -606,6 +616,7 @@ section.content-section {
   a {
     display: flex;
     transition: all 0.2s ease;
+    border-radius: 4px;
 
     &:hover {
       background-color: lightgrey;
