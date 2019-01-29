@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Left extends Component {
   constructor(props) {
@@ -21,19 +22,21 @@ class Left extends Component {
 
   render() {
     return (
-      <div
-        className={
-          this.state.hover ? "primary-nav--left hovered" : "primary-nav--left"
-        }
-        onMouseEnter={this.hoverOn}
-        onMouseLeave={this.hoverOff}
-      >
-        <div className="arrow">
-          <div className="arrow--chevron" />
-          <div className="arrow--line" />
+      <Link to="/investigate">
+        <div
+          className={
+            this.state.hover ? "primary-nav--left hovered" : "primary-nav--left"
+          }
+          onMouseEnter={this.hoverOn}
+          onMouseLeave={this.hoverOff}
+        >
+          <div className="arrow">
+            <div className="arrow--chevron" />
+            <div className="arrow--line" />
+          </div>
+          <p>Investigate</p>
         </div>
-        <p>Investigate</p>
-      </div>
+      </Link>
     );
   }
 }

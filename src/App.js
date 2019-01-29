@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Menu from './components/Menu';
 import Controls from './components/Controls';
 import BottomPrimaryNav from './components/BottomPrimaryNav/index';
 import Logo from './components/Logo.svg';
+
+import Home from './routes/Home'
+import Investigate from './routes/Investigate'
 
 class App extends Component {
   constructor(props) {
@@ -21,14 +26,15 @@ class App extends Component {
   }
   
   render() {
-    return <div className="App">
-        <Menu show={this.state.showMenu} />
-        <Controls showMenuHandler={this.showMenu} />
-        <section class="center">
-          <img src={Logo} alt="Public Domain Logo"/>
-        </section>
-        <BottomPrimaryNav />
-      </div>;
+    return <Router>
+        <div className="App">
+          <Menu show={this.state.showMenu} />
+          <Controls showMenuHandler={this.showMenu} />
+
+          <Route exact path="/" component={Home} />
+          <Route exact path="/investigate" component={Investigate} />
+        </div>
+      </Router>
   }
 }
 
