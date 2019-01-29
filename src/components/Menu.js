@@ -49,7 +49,7 @@ class Menu extends Component {
           <nav>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
             </ul>
           </nav>

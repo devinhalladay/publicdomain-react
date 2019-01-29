@@ -29,7 +29,7 @@ class Investigate extends Component {
   linkResolver(doc) {
     // Define the url depending on the document type
     if (doc.type === "page") {
-      return "/page/" + doc.uid;
+      return "/" + doc.uid;
     } else if (doc.type === "blog_post") {
       return "/blog/" + doc.uid;
     }
@@ -41,7 +41,6 @@ class Investigate extends Component {
   render() {
     if (this.state.doc) {
       const document = this.state.doc.data;
-      console.log(document.cover_image.url);
       
       return <div className="container">
           <section className="content-section grid">
@@ -136,9 +135,7 @@ class Investigate extends Component {
 
 
     return (
-      <div>
-        <h1>Loading…</h1>
-      </div>
+      <React.Fragment></React.Fragment>
     )
     
   }
