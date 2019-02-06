@@ -39,10 +39,17 @@ export default class JournalPost extends Component {
     if (this.state.doc) {
       return (
         <React.Fragment>
-          <h1>{PrismicReact.RichText.asText(this.state.doc.data.title)}</h1>
-          <article>
-            {PrismicReact.RichText.render(this.state.doc.data.body, this.props.prismicCtx.linkResolver)}
-          </article>
+          <div className="container">
+            <div className="grid">
+              <div className="gc-s12">
+                <h1 className="page-title">{PrismicReact.RichText.asText(this.state.doc.data.title)}</h1>
+              </div>
+              <div className="gc-s5"></div>
+              <article className="gc-s5">
+                {PrismicReact.RichText.render(this.state.doc.data.body, this.props.prismicCtx.linkResolver)}
+              </article>
+            </div>
+          </div>
         </React.Fragment>
       )
     } else if (this.state.notFound) {

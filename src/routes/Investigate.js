@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Prismic from 'prismic-javascript';
-import { Link, RichText, Date } from 'prismic-reactjs';
+import { RichText, Date } from 'prismic-reactjs';
 
 class Investigate extends Component {
   constructor(props) {
@@ -26,22 +27,10 @@ class Investigate extends Component {
     });
   }
 
-  linkResolver(doc) {
-    // Define the url depending on the document type
-    if (doc.type === "page") {
-      return "/" + doc.uid;
-    } else if (doc.type === "blog_post") {
-      return "/blog/" + doc.uid;
-    }
-
-    // Default to homepage
-    return "/";
-  }
-
   render() {
     if (this.state.doc) {
       const document = this.state.doc.data;
-      
+
       return <div className="container">
           <section className="content-section grid">
             <div className="gc-s12">
@@ -63,12 +52,12 @@ class Investigate extends Component {
 
             <div className="gc-s4 bt">
               <div className="content-category-container">
-                <a href="/journals">
+                <Link to="/journal">
                   <div className="browse-link">Browse</div>
                   <h2>Journals</h2>
-                </a>
-                <a href="/" className="article-unit">
-                <div className="article-cover-image" style={{ backgroundImage: `url(${document.cover_image.url})` }} />
+                </Link>
+                <a href={`/journal/${document.container.toLowerCase()}/${this.state.doc.uid}`} className="article-unit">
+                  <div className="article-cover-image" style={{ backgroundImage: `url(${document.cover_image.url})` }} />
                   <p className="article-title">
                     {RichText.asText(document.title)}
                   </p>
@@ -133,11 +122,7 @@ class Investigate extends Component {
         </div>;
     }
 
-
-    return (
-      <React.Fragment></React.Fragment>
-    )
-    
+    return <React.Fragment />;
   }
 }
 

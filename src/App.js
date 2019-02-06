@@ -6,6 +6,8 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 
 import Menu from './components/Menu';
 import Controls from './components/Controls';
@@ -15,14 +17,14 @@ import "./styles/app.scss";
 import Home from './routes/Home'
 import Investigate from './routes/Investigate'
 import NotFound from './routes/NotFound'
-import Page from './routes/Page'
-import Journals from './routes/Journals'
+import Journal from './routes/Journal'
 import JournalPost from './routes/JournalPost'
+import Systems from './routes/Systems'
 
-class App extends Component {
+class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       showMenu: false
     };
 
@@ -34,25 +36,46 @@ class App extends Component {
       showMenu: !this.state.showMenu
     });
   }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Menu show={this.state.showMenu} />
+        <Controls showMenuHandler={this.showMenu} />
+
+        <Route
+          render={({ location }) => (
+            <TransitionGroup>
+              <CSSTransition
+                key={location.pathname}
+                classNames="fade"
+                timeout={600}
+              >
+                <Switch location={location}>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/investigate" component={Investigate} />
+                  <Route exact path="/journal" component={Journal} />
+
+                  <Route exact path="/journal/systems" component={Systems} />
+
+                  <Route exact path="/journal/:container/:uid" render={routeProps => <JournalPost {...routeProps} prismicCtx={this.props.prismicCtx} />} />
+
+                  <Route component={NotFound} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )}
+        />
+      </React.Fragment>
+    )
+  }
+}
   
+class App extends Component {
   render() {
     return <Router>
-        <React.Fragment>
-          <Menu show={this.state.showMenu} />
-          <Controls showMenuHandler={this.showMenu} />
-
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/investigate" component={Investigate} />
-            <Route exact path="/journals" component={Journals} />
-            <Route exact path="/page/:uid" render={routeProps => <Page {...routeProps} prismicCtx={this.props.prismicCtx} />} />
-
-            <Route exact path="/journals/:container/:uid" render={routeProps => <JournalPost {...routeProps} prismicCtx={this.props.prismicCtx} />} />
-
-            <Route component={NotFound} />
-          </Switch>
-        </React.Fragment>
-      </Router>;
+      <Container />
+    </Router>
   }
 }
 

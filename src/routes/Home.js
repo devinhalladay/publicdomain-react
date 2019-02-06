@@ -26,9 +26,6 @@ class Home extends Component {
 
   render() {
     return <React.Fragment>
-        <section className="left">
-          <Investigate />
-        </section>
         <section className="center">
           <img src={Logo} alt="Public Domain Logo" />
         </section>
